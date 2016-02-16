@@ -8,24 +8,24 @@ import java.util.Scanner;
 */ 
 
 public class CountOddEven { 
-public static void main(String[] args) { 
-Scanner in = new Scanner(System.in); 
-int a = in.nextInt(); 
-int odd = 0; 
-int even = 0; 
+	public static void main(String[] args) { 
+		Scanner in = new Scanner(System.in); 
+		int a = in.nextInt(); 
+		int odd = 0; 
+		int even = 0; 
 
-while (a != 0){ 
-if (a%2 == 0) { 
-even++; 
-} 
-else { 
-odd++; 
-} 
-a = in.nextInt(); 
-} 
-System.out.println("You have entered " + even + " even numbers."); 
-System.out.println("You have entered " + odd + " odd numbers."); 
-} 
+		while (a != 0){ 
+			if (a%2 == 0) { 
+				even++; 
+			} 
+			else { 
+				odd++; 
+			} 
+			a = in.nextInt(); 
+		} 
+	System.out.println("You have entered " + even + " even numbers."); 
+	System.out.println("You have entered " + odd + " odd numbers."); 
+	} 
 } 
 /* 
 4 
