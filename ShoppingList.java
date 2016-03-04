@@ -28,25 +28,11 @@ milk
 bread
 >6
 Good buy!
-
-... 
-case ADD_ITEM: addItem();
- switch (month) {
-            case 1:  monthString = "January";
-                     break;
-            case 2:  monthString = "February";
-                     break;
-            case 3:  monthString = "March";
-                     break;
-            case 4:  monthString = "April";
-                     break;
-            default: monthString = "Invalid month";
-                     break;
-        }
 */
 
 import java.io.BufferedReader;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.io.*;
@@ -191,31 +177,93 @@ public class ShoppingList {
     }
 
     public static void saveListToFile() { //4
-        String text = Arrays.toString(shopList);
-        try (
-                PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get("shoppingList.txt"))))
+        try ( PrintWriter writer = new PrintWriter(Files.newBufferedWriter(Paths.get("shoppingList.txt"))))
         {
-            writer.println(text);
+            for (String s : shopList){
+                writer.println(s);
+            }
+            System.out.println("Shopping list was successfully saved.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void loadListFromFile() { //5
-        String text; //List<String> list = new ArrayList<>();
         try (BufferedReader reader = Files.newBufferedReader(Paths.get("shoppingList.txt")))
         {
-            String line = null;
+            String line;
+            int i= 0;
+            position = 0;
             while ((line = reader.readLine()) != null) {
-               // list.add(line);
+               shopList[i] = line;
+                i++;
+                position++;
             }
+            System.out.println("Shopping list was successfully loaded from file. ");
         } catch (IOException e) {
             e.printStackTrace();
         }
-/*
-* Scanner sc = new Scanner(new File("myNumbers"));
-      while (sc.hasNextLong()) {
-          long aLong = sc.nextLong();
-      }*/
     }
 }
+/*This is a shopping list application. Enter your choice:
+1 - add an item
+2 - list items
+3 - delete an item
+4 - save list to file
+5 - load list from file
+6 - exit
+1
+Enter item to add:
+milk
+milk was added, enter your next choice:
+1
+Enter item to add:
+bred
+bred was added, enter your next choice:
+1
+Enter item to add:
+sugar
+sugar was added, enter your next choice:
+1
+Enter item to add:
+coffee
+coffee was added, enter your next choice:
+2
+milk
+bred
+sugar
+coffee
+Please, enter your next choice:
+4
+Shopping list was successfully saved.
+3
+Enter the item you want to delete from the list:
+coffee
+coffee was removed from the list.
+Please, enter your next choice:
+3
+Enter the item you want to delete from the list:
+sugar
+sugar was removed from the list.
+Please, enter your next choice:
+2
+milk
+bred
+Please, enter your next choice:
+5
+Shopping list was successfully loaded from file.
+2
+milk
+bred
+sugar
+coffee
+null
+null
+null
+null
+null
+null
+Please, enter your next choice:
+6
+Good bye!
+*/
